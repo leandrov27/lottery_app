@@ -61,9 +61,10 @@ export function useTable() {
       for (let j = 0; j < columns; j++) {
         const number = numbers[i * columns + j];
         const isSelected = selectedNumbers.includes(number);
+        const isWinner = number === winner;
 
         newTable.push(
-          <li className={isSelected ? "active" : ""} key={j}>
+          <li className={`${isSelected ? "active" : ""} ${isWinner ? "winner-background" : ""}`} key={j}>
             {number}
           </li>
         );
