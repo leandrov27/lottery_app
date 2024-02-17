@@ -25,7 +25,7 @@ import './assets/css/main.css';
 import $ from 'jquery'; 
 window.$ = $;
 
-import './assets/js/vendor/bootstrap.bundle.min.js';
+import './assets/js/bootstrap.bundle.min.js';
 //^ scripts ===========================
 
 //* broadcasting ===========================
