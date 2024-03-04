@@ -1,0 +1,58 @@
+
+.neon {
+  position: absolute;
+  font-size: 15px;
+  animation: neon 1.8s linear infinite;
+}
+
+.star-1 {
+  margin-top: -20px;
+  margin-left: -40px;
+}
+
+.star-2 {
+  margin-top: -20px ;
+  margin-left: 2px;
+}
+
+.star-3 {
+  margin-top: 20px;
+  margin-left: -43px;
+}
+
+.star-4 {
+  margin-top: 20px;
+  margin-left: 2px;
+}
+
+.star-5 {
+  margin-top: 0px;
+  margin-left: -19px;
+}
+
+.almostWinner {
+  border: 2px solid !important;
+  animation: almost 1.8s linear infinite !important;
+}
+
+@keyframes almost {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(94, 97%, 24%);
+  }
+
+  50% {
+    box-shadow: 0 0 40px #ffffff;
+  }
+}
+
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 0px hsl(56, 100%, 53%);
+  }
+
+  50% {
+    text-shadow: 0 0 10px #ffee10;
+  }
+}

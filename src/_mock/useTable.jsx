@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 export function useTable() {
   const [numbers, setNumbers] = useState([]); // Almacena los números que se mostrarán en la tabla
   const [selectedNumbers, setSelectedNumbers] = useState([]); // Almacena los números que han sido seleccionados
-  const [customers, setCustomers] = useState([]);
   const [countSelectedNumbers, setCountSelectedNumbers] = useState({}); // Almacena cuántas veces ha sido seleccionado cada número
 
   const [rows, setRows] = useState(0); // Almacena la cantidad de filas que tendrá la tabla
@@ -14,7 +13,6 @@ export function useTable() {
   const [table, setTable] = useState([]); // Almacena la tabla generada
 
   const [winner, setWinner] = useState(null); // Almacena el número ganador, si es que hay uno
-  const [winnerName, setWinnerName] = useState(''); // Almacena el nombre del ganador, si es que hay uno
 
   // Función para generar los números que se mostrarán en la tabla
   const generateNumbers = (data) => {
@@ -25,8 +23,7 @@ export function useTable() {
 
   // Función para manejar la selección de números
   const handleSelectNumber = (selectedNumbersFromPusher) => {
-    setSelectedNumbers(selectedNumbersFromPusher.map(number => number.lucky_number)); // Actualiza los números seleccionados con los recibidos de Pusher
-    setCustomers(selectedNumbersFromPusher.map(number => number)); // Actualiza el cliente seleccionado con los datos recibidos de Pusher
+    setSelectedNumbers(selectedNumbersFromPusher); // Actualiza los números seleccionados con los recibidos de Pusher
   };
 
   /* 
@@ -45,9 +42,7 @@ export function useTable() {
     };
     setCountSelectedNumbers(newCount);
     if (newCount[selectedNumber] === 5) {
-      const winnerName = getWinnerName(selectedNumber);
       setWinner(selectedNumber);
-      setWinnerName(winnerName);
     }
   };
 
@@ -68,11 +63,9 @@ export function useTable() {
         const isSelected = selectedNumbers.includes(number);
         const isWinner = number === winner;
         const count = countSelectedNumbers[number] || 0;
-
-        const customerName = getWinnerName(number);
   
         newTable.push(
-          <li title={customerName} className={`${isSelected ? (count === 4 ? "active almostWinner" : "active") : ""} ${isWinner ? "winner" : ""}`} key={number}>
+          <li title={number} className={`${isSelected ? (count === 4 ? "active almostWinner" : "active") : ""} ${isWinner ? "winner-background" : ""}`} key={number}>
             <div>
               {number} 
 
@@ -88,21 +81,5 @@ export function useTable() {
     setTable(newTable);
   }, [numbers, rows, columns, selectedNumbers, countSelectedNumbers]);
 
-  // Función para obtener el nombre del ganador
-  const getWinnerName = (selectedNumber) => {
-    // Buscar el objeto que tenga el mismo lucky_number que el selectedNumber
-    const winnerObject = customers.find(
-      (item) => item.lucky_number === selectedNumber
-    );
-
-    // Si se encuentra el objeto, devolver el nombre del cliente
-    if (winnerObject) {
-      return winnerObject.customer;
-    }
-
-    // Si no se encuentra el objeto, devolver un valor por defecto
-    return "Desconocido";
-  };
-
-  return { table, generateNumbers, handleSelectNumber, handleSort, winner, winnerName, selectedNumbers, countSelectedNumbers };
+  return { table, generateNumbers, handleSelectNumber, handleSort, winner, selectedNumbers, countSelectedNumbers };
 }

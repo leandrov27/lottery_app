@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.pyro {
+  height: 100vh;
+  background-color: #e2aa01;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.btn-regresar{
+  display: flex;
+  position: absolute !important;
+  justify-content: center;
+  align-items: center;
+  margin-top: 190px;
+}
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: calc(100vmax / 1500 * 100);
+  color: #fff;
+  text-shadow: 6px 4px #735b13;
+}
+.title2 {
+  font-family: "Pacifico", cursive;
+  font-size: calc(100vmax / 1500 * 100);
+  margin-top: 190px;
+  color: #fff;
+  text-shadow: 6px 4px #735b13;
+}
+[class^="firework-"] {
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  border-radius: 50%;
+}
+
+$count: 15;
+$frame-list: firework-sm, firework-md, firework-lg;
+@for $i from 1 through $count {
+  .firework-#{$i} {
+    animation: nth($frame-list, random(3)) 1.2s both infinite;
+    animation-delay: #{random($count) * 0.1}s;
+    top: random(16) * 5% + 10%;
+    left: random(16) * 5% + 10%;
+  }
+}
+
+// dots generator
+@function dots($r) {
+  $result: ();
+  // straight
+  @for $i from 1 through 4 {
+    $x: 0;
+    $y: 0;
+    @if $i <= 2 {
+      $x: $r;
+    } @else {
+      $y: $r;
+    }
+    @if $i % 2 != 0 {
+      $x: -$x;
+      $y: -$y;
+    }
+    $result: append($result, #{$x}rem #{$y}rem 0 #fff, comma);
+  }
+  // diagonal
+  @for $i from 1 through 4 {
+    $dist2: $r * 0.7;
+    $x: $dist2;
+    $y: $dist2;
+    @if $i > 2 {
+      $x: -$x;
+    }
+    @if $i % 2 != 0 {
+      $y: -$y;
+    }
+    $result: append($result, #{$x}rem #{$y}rem 0 #fff, comma);
+  }
+  @return $result;
+}
+
+// firework animation
+@mixin fireworkSize($name, $r) {
+  @keyframes firework-#{$name} {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    10%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      box-shadow: dots($r);
+    }
+  }
+}
+@include fireworkSize(sm, 0.5);
+@include fireworkSize(md, 0.7);
+@include fireworkSize(lg, 0.9);

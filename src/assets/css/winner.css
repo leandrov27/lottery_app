@@ -1,0 +1,17 @@
+.winner {
+  background: green !important;
+  background-image: none !important;
+  animation: win 1.8s linear infinite !important;
+  border: 2px solid !important;
+}
+
+@keyframes win {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(0, 0%, 100%);
+  }
+
+  50% {
+    box-shadow: 0 0 10px #ffffff;
+  }
+}

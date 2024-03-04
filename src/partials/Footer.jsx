@@ -1,4 +1,5 @@
 //& images
+import { Link } from 'react-router-dom';
 import roundShape from '../assets/images/elements/round-shape-2.png';
 
 //* =================================================================
@@ -15,7 +16,9 @@ const Footer = () => {
           <div className="col-lg-6">
             <p className="copy-right-text text-lg-start text-center mb-lg-0 mb-3">
               Copyright © 2024. Todos los derechos reservados por {" "}
-              <a href="index.html">Rifa</a>
+              <Link to="/">
+                Rifa
+              </Link>
             </p>
           </div>
           <div className="col-lg-6">

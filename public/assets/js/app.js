@@ -352,9 +352,9 @@
     });
 
     // lottery number select js 
-    $('.lottery-single__number li').on('click', function(){
-      $(this).toggleClass('active');
-    });
+    //$('.lottery-single__number li').on('click', function(){
+      //$(this).toggleClass('active');
+    //});
 
 
     $( function() {

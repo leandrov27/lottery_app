@@ -1202,11 +1202,6 @@ textarea:focus,
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
 }
 
-.winner-background {
-    background-color: green !important;
-    background-image: none !important;
-}
-
 .scroll-to-top .scroll-icon {
     font-size: 36px;
     color: #ffffff;
@@ -7405,8 +7400,8 @@ span.is-active:after {
 }
 
 .lottery-single__number li {
-    width: 36px;
-    height: 36px;
+    width: 60px;
+    height: 60px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     -webkit-border-radius: 50%;

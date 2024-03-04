@@ -1,6 +1,7 @@
 //& react
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 //& pages
 import App from "./pages/App.jsx";
@@ -19,6 +20,9 @@ import './assets/css/vendor/slick.css';
 import './assets/css/vendor/jquery-ui.min.css';
 import './assets/css/vendor/datepicker.min.css';
 import './assets/css/main.css';
+//->custom
+import './assets/css/star.css';
+import './assets/css/winner.css';
 //~ styles ===========================
 
 //^ scripts ===========================
@@ -33,6 +37,7 @@ import './assets/js/bootstrap.bundle.min.js';
   window.Pusher = Pusher;
 
   import Echo from "laravel-echo";
+import { Winner } from "./pages/Winner.jsx";
   window.Echo = new Echo({
       broadcaster: 'pusher',
       key: PUSHER_API_KEY,
@@ -44,5 +49,10 @@ import './assets/js/bootstrap.bundle.min.js';
 //* =================================================================
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <App />
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/winner" element={<Winner />} />
+    </Routes>
+  </Router>
 );
