@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 //& pages
 import App from "./pages/App.jsx";
+import { Winner } from "./pages/Winner.jsx";
 
 //& config
 import { PUSHER_API_KEY } from "./config.jsx";
@@ -37,7 +38,6 @@ import './assets/js/bootstrap.bundle.min.js';
   window.Pusher = Pusher;
 
   import Echo from "laravel-echo";
-import { Winner } from "./pages/Winner.jsx";
   window.Echo = new Echo({
       broadcaster: 'pusher',
       key: PUSHER_API_KEY,

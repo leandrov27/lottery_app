@@ -1,5 +1,7 @@
-//& images
+//& react
 import { Link } from 'react-router-dom';
+
+//& images
 import roundShape from '../assets/images/elements/round-shape-2.png';
 
 //* =================================================================
